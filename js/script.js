@@ -6,7 +6,7 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
     if (screenWidth < 768) {
       $("#collapsable-nav").collapse('hide');
     }
-  });
+  })
 });
 
 (function (global) {
@@ -32,7 +32,7 @@ var insertHtml = function (selector, html) {
 // Show loading icon inside element identified by 'selector'.
 var showLoading = function (selector) {
   var html = "<div class='text-center'>";
-  html += "<img src='/images/jumbotron_768.jpg'></div>";
+  html += "<img src='images/ajax.loader.gif></div>";
   insertHtml(selector, html);
 };
 
@@ -82,15 +82,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
 // On first load, show home view
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
-  allCategoriesUrl, 
-  // ***** <---- TODO: STEP 1: Substitute [...] ******
+  allCategoriesUrl,
+  
+  function buildAndShowHomeHTML
+
   true); // Explicitly setting the flag to get JSON from server processed into an object literal
 });
-// *** finish **
 
 
 // Builds HTML for the home page based on categories array
 // returned from the server.
+
 function buildAndShowHomeHTML (categories) {
 
   // Load home snippet page
@@ -193,7 +195,7 @@ function buildCategoriesViewHtml(categories,
   finalHtml += "<section class='row'>";
 
   // Loop over categories
-  for (var i = 0; i < categories.length; i++) {
+  for (var i = 4; i < categories.length; i++) {
     // Insert category values
     var html = categoryHtml;
     var name = "" + categories[i].name;
@@ -336,7 +338,6 @@ function insertItemPortionName(html,
   html = insertProperty(html, portionPropName, portionValue);
   return html;
 }
-
 
 global.$dc = dc;
 
